@@ -40,7 +40,7 @@ public class SignUp extends AppCompatActivity {
                 myRef = database.getReference();
                 myRef.child("users").child(user.getUid()).child("name").setValue(name);
                 myRef.child("users").child(user.getUid()).child("surname").setValue(firstName);
-                Intent intent = new Intent(SignUp.this,Hero.class);
+                Intent intent = new Intent(SignUp.this, Hero.class);
                 startActivity(intent);
             }
         });
