@@ -28,13 +28,13 @@ import com.google.firebase.database.ValueEventListener;
 
 public class MainActivity extends AppCompatActivity {
 
-    String password;
-    String login;
+    private String password;
+    private String login;
     private FirebaseAuth.AuthStateListener mAuthStateListener;
     private FirebaseAuth mAuth;
-    FirebaseDatabase database = FirebaseDatabase.getInstance();
-    DatabaseReference myRef;
-    FirebaseUser user = mAuth.getInstance().getCurrentUser();
+    private FirebaseDatabase database = FirebaseDatabase.getInstance();
+    private DatabaseReference myRef;
+    private FirebaseUser user = mAuth.getInstance().getCurrentUser();
 
     @RequiresApi(api = Build.VERSION_CODES.KITKAT)
     @Override
@@ -54,17 +54,18 @@ public class MainActivity extends AppCompatActivity {
                 myRef.addListenerForSingleValueEvent(new ValueEventListener() {
                     @Override
                     public void onDataChange(@NonNull DataSnapshot dataSnapshot) {
-                        if (dataSnapshot.child("users").child(user.getUid()).child("hero").getValue(String.class).equals("false")) {
+                        if ((dataSnapshot.child("users").child(user.getUid()).child("hero").getValue(String.class)).equals("false")) {
                             Toast.makeText(getApplicationContext(),"Нужен персонаж",Toast.LENGTH_SHORT).show();
                         } else {
                             Toast.makeText(getApplicationContext(),"Успешно",Toast.LENGTH_SHORT).show();
+
                         }
 
                     }
 
 
                     @Override
-                    public void onCancelled(DatabaseError databaseError) {
+                    public void onCancelled(@NonNull DatabaseError databaseError) {
 
                     }
                 });
@@ -120,7 +121,7 @@ public class MainActivity extends AppCompatActivity {
 
 
                         @Override
-                        public void onCancelled(DatabaseError databaseError) {
+                        public void onCancelled(@NonNull DatabaseError databaseError) {
 
                         }
                     });
