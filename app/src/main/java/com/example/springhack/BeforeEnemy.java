@@ -66,9 +66,9 @@ public class BeforeEnemy extends AppCompatActivity {
             @Override
             public void onItemClick(AdapterView<?> parent, View itemClicked, int position, long id) {
                 Intent intent = new Intent(BeforeEnemy.this, Enemy.class);
-                intent.putExtra("numberOfTask", position);
+                intent.putExtra("numberOfTask", position + "");
                 startActivity(intent);
-                finish();
+
             }
         });
     }

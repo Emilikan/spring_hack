@@ -14,8 +14,8 @@
 
         <ImageView
             android:id="@+id/logo"
-            android:layout_width="30dp"
-            android:layout_height="wrap_content"
+            android:layout_width="match_parent"
+            android:layout_height="247dp"
             android:layout_centerHorizontal="true"
             app:srcCompat="@drawable/ic_user_3"
             tools:ignore="VectorDrawableCompat" />
@@ -30,7 +30,7 @@
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_centerInParent="true"
-            android:text="Лютый" />
+            android:text="" />
     </RelativeLayout>
 
     <LinearLayout
@@ -45,7 +45,7 @@
             android:layout_height="wrap_content"
             android:layout_centerHorizontal="true"
             android:layout_centerVertical="true"
-            android:text="Ходит на забивы, ебашит всех без разбора. Любит ебать в жопу." />
+            android:text="" />
 
         <TextView
             android:id="@+id/taskInfo"
@@ -53,13 +53,13 @@
             android:layout_height="wrap_content"
             android:layout_centerHorizontal="true"
             android:layout_centerVertical="true"
-            android:text="Задача о том-то." />
+            android:text="" />
 
     </LinearLayout>
 
 
     <TextView
-        android:id="@+id/textView2"
+        android:id="@+id/link"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_marginLeft="25dp"
@@ -82,7 +82,7 @@
         android:id="@+id/button_fight"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:text="На нести удар!" />
+        android:text="Нанести удар!" />
 
 </LinearLayout>
 
