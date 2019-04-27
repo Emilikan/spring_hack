@@ -117,7 +117,7 @@ public class Profile extends AppCompatActivity {
                     @Override
                     public void onClick(View view) {
 
-                        Intent intent = new Intent(Profile.this, Enemy.class);
+                        Intent intent = new Intent(Profile.this, BeforeEnemy.class);
                         startActivity(intent);
                         show.dismiss();
                     }
