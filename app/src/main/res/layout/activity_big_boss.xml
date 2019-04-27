@@ -30,7 +30,7 @@
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_centerInParent="true"
-            android:text="Лютый" />
+            android:text="Юнармеец" />
     </RelativeLayout>
     <RelativeLayout
         android:layout_width="match_parent"
@@ -40,20 +40,9 @@
             android:id="@+id/heroInfo"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:layout_centerVertical="true"
-            android:layout_centerHorizontal="true"
-            android:text="Ходит на забивы, ебашит всех без разбора. Любит ебать в жопу." />
+            android:layout_centerInParent="true"
+            android:text="Там-там-там  пабам описание" />
     </RelativeLayout>
-
-
-
-    <TextView
-        android:id="@+id/textView2"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_marginLeft="25dp"
-        android:text="Ссылка на репозиторий" />
-
 
 
     <TextView
@@ -61,7 +50,17 @@
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_marginLeft="25dp"
-        android:text="XH:" />
+        android:text="Топ команды" />
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:orientation="vertical">
+
+        <android.support.v7.widget.RecyclerView
+            android:layout_width="match_parent"
+            android:layout_height="match_parent" />
+    </LinearLayout>
 
     <ProgressBar
         android:id="@+id/progressBar2"
@@ -69,9 +68,16 @@
         android:layout_width="match_parent"
         android:layout_height="wrap_content" />
 
-    <Button
-        android:id="@+id/button_fight"
+    <TextView
+        android:id="@+id/textView9"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:text="На нести удар!" />
+        android:text="HP:" />
+
+    <ProgressBar
+        android:id="@+id/progressBar"
+        style="?android:attr/progressBarStyleHorizontal"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content" />
+
 </LinearLayout>
