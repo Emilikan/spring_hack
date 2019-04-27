@@ -33,8 +33,6 @@ public class Hero extends AppCompatActivity {
 
     private String imageUri;
 
-    private String imageId;
-
     private FirebaseDatabase database = FirebaseDatabase.getInstance();
     private DatabaseReference myRef;
     private FirebaseAuth mAuth;
@@ -73,8 +71,6 @@ public class Hero extends AppCompatActivity {
                 imageUri = dataSnapshot.child("hero").child(numberOfHero).child("id_image").getValue(String.class);
 
 
-                imageId = dataSnapshot.child("hero").child(numberOfHero).child("info").getValue(String.class);
-
                 heroName.setText(name);
                 heroInfo.setText(info);
                 myRef.child("users").child(user.getUid()).child("hero_main").child("name").setValue(name);
@@ -82,7 +78,7 @@ public class Hero extends AppCompatActivity {
                 myRef.child("users").child(user.getUid()).child("hero_main").child("id_image").setValue(imageUri);
 
                 FirebaseStorage storage = FirebaseStorage.getInstance();
-                StorageReference storageRef = storage.getReferenceFromUrl(imageId);
+                StorageReference storageRef = storage.getReferenceFromUrl(imageUri);
                 storageRef.getDownloadUrl().addOnSuccessListener(new OnSuccessListener<Uri>() {
                     @Override
                     public void onSuccess(Uri uri) {
