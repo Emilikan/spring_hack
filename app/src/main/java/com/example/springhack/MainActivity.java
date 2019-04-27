@@ -50,37 +50,19 @@ public class MainActivity extends AppCompatActivity {
         signIn.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                myRef = database.getReference();
-                myRef.addListenerForSingleValueEvent(new ValueEventListener() {
-                    @Override
-                    public void onDataChange(@NonNull DataSnapshot dataSnapshot) {
-                        if ((dataSnapshot.child("users").child(user.getUid()).child("hero").getValue(String.class)).equals("false")) {
-                            Toast.makeText(getApplicationContext(),"Нужен персонаж",Toast.LENGTH_SHORT).show();
-                        } else {
-                            Toast.makeText(getApplicationContext(),"Успешно",Toast.LENGTH_SHORT).show();
-
-                        }
-
-                    }
-
-
-                    @Override
-                    public void onCancelled(@NonNull DatabaseError databaseError) {
-
-                    }
-                });
+                sidnInUser();
             }
         });
         signUp.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                singInUser();
+                singUpUser();
             }
         });
     }
 
     @RequiresApi(api = Build.VERSION_CODES.KITKAT)
-    private void singInUser() {
+    private void singUpUser() {
         login = ((EditText) findViewById(R.id.Email)).getText().toString();
         password = ((EditText) findViewById(R.id.Password)).getText().toString();
         mAuth = FirebaseAuth.getInstance();
@@ -127,6 +109,58 @@ public class MainActivity extends AppCompatActivity {
                     });
 
                 } else {
+                    Toast.makeText(getApplicationContext(), "Авторизация провалена", Toast.LENGTH_LONG).show();
+                }
+            }
+        });
+    }
+    private void sidnInUser(){
+        login = ((EditText) findViewById(R.id.Email)).getText().toString();
+        password = ((EditText) findViewById(R.id.Password)).getText().toString();
+        mAuth = FirebaseAuth.getInstance();
+
+        mAuthStateListener = new FirebaseAuth.AuthStateListener() {
+            @Override
+            public void onAuthStateChanged(@NonNull FirebaseAuth firebaseAuth) {
+                FirebaseUser user = firebaseAuth.getCurrentUser();
+                if (user != null) {
+                    // sing in
+
+                } else {
+                    //sing out
+                }
+            }
+        };
+
+        mAuth.signInWithEmailAndPassword(login, password).addOnCompleteListener(this, new OnCompleteListener<AuthResult>()  {
+            @Override
+            public void onComplete(@NonNull Task<AuthResult> task) {
+                if (task.isSuccessful()) {
+
+                    myRef = database.getReference();
+                    myRef.addListenerForSingleValueEvent(new ValueEventListener() {
+                        @Override
+                        public void onDataChange(@NonNull DataSnapshot dataSnapshot) {
+                            if ((dataSnapshot.child("users").child(user.getUid()).child("hero").getValue(String.class)).equals("false")) {
+                                Toast.makeText(getApplicationContext(),"Нужен персонаж",Toast.LENGTH_SHORT).show();
+                            } else {
+                                Toast.makeText(getApplicationContext(),"Успешно",Toast.LENGTH_SHORT).show();
+
+                            }
+
+                        }
+
+
+                        @Override
+                        public void onCancelled(@NonNull DatabaseError databaseError) {
+
+                        }
+                    });
+                    Intent intent = new Intent(MainActivity.this, Profile.class);
+                    intent.putExtra("PARAM", 1);
+                    startActivity(intent);
+                    finish();
+                            } else {
                     Toast.makeText(getApplicationContext(), "Авторизация провалена", Toast.LENGTH_LONG).show();
                 }
             }

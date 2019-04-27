@@ -30,12 +30,20 @@ public class Hero extends AppCompatActivity {
     private TextView heroInfo;
     private String name;
     private String info;
+
+    private String imageUri;
+
     private String imageId;
+
     private FirebaseDatabase database = FirebaseDatabase.getInstance();
     private DatabaseReference myRef;
     private FirebaseAuth mAuth;
     private FirebaseUser user;
+
+    private int count;
+
     private ImageView imageView;
+
 
 
 
@@ -45,24 +53,33 @@ public class Hero extends AppCompatActivity {
         setContentView(R.layout.activity_hero);
         heroName =  findViewById(R.id.heroName);
         heroInfo =  findViewById(R.id.heroInfo);
+
         imageView = findViewById(R.id.imageView2);
 
         user = mAuth.getInstance().getCurrentUser();
 
         final Random random = new Random();
-        final String numberOfHero = random.nextInt(2)+"";
+
         myRef = database.getReference();
         myRef.addListenerForSingleValueEvent(new ValueEventListener() {
             @RequiresApi(api = Build.VERSION_CODES.KITKAT)
             @Override
             public void onDataChange(@NonNull DataSnapshot dataSnapshot) {
+                count = Integer.parseInt(dataSnapshot.child("hero").child("counter").getValue(String.class));
+                final String numberOfHero = random.nextInt(count+1)+"";
                 name = dataSnapshot.child("hero").child(numberOfHero).child("name").getValue(String.class);
                 info = dataSnapshot.child("hero").child(numberOfHero).child("info").getValue(String.class);
+
+                imageUri = dataSnapshot.child("hero").child(numberOfHero).child("id_image").getValue(String.class);
+
+
                 imageId = dataSnapshot.child("hero").child(numberOfHero).child("info").getValue(String.class);
+
                 heroName.setText(name);
                 heroInfo.setText(info);
-                myRef.child("users").child("hero").child("name").setValue(name);
-                myRef.child("users").child("hero").child("info").setValue(info);
+                myRef.child("users").child(user.getUid()).child("hero_main").child("name").setValue(name);
+                myRef.child("users").child(user.getUid()).child("hero_main").child("info").setValue(info);
+                myRef.child("users").child(user.getUid()).child("hero_main").child("id_image").setValue(imageUri);
 
                 FirebaseStorage storage = FirebaseStorage.getInstance();
                 StorageReference storageRef = storage.getReferenceFromUrl(imageId);
