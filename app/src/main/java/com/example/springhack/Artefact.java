@@ -10,6 +10,5 @@ public class Artefact extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_artefact);
 
-
     }
 }
