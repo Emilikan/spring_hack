@@ -13,7 +13,9 @@ public class SmallBoss extends AppCompatActivity {
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
+
         setContentView(R.layout.activity_small_boss);
+
         tv_textName = findViewById(R.id.heroName);
         //tv_textName.setText();
         tv_hero_info = findViewById(R.id.heroInfo);
