@@ -7,10 +7,9 @@ import android.os.Bundle;
 import android.support.v7.widget.CardView;
 import android.view.View;
 import android.widget.Button;
-import android.widget.EditText;
 import android.widget.TextView;
 
-public class Hero extends AppCompatActivity {
+public class Profile_test extends AppCompatActivity {
     String heroName;
     String heroInfo;
     Button fight;
@@ -31,7 +30,7 @@ public class Hero extends AppCompatActivity {
         card.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                Intent intent = new Intent(Hero.this, Artefact.class);
+                Intent intent = new Intent(Profile_test.this, Artefact.class);
                 startActivity(intent);
             }
         });
@@ -41,8 +40,8 @@ public class Hero extends AppCompatActivity {
             @Override
             public void onClick(View v) {
 
-                final AlertDialog.Builder builder = new AlertDialog.Builder(Hero.this);
-                final View view = View.inflate(Hero.this, R.layout.dialog_select_boss, null);
+                final AlertDialog.Builder builder = new AlertDialog.Builder(Profile_test.this);
+                final View view = View.inflate(Profile_test.this, R.layout.dialog_select_boss, null);
                 builder.setView(view);
                 final AlertDialog show = builder.show();
                 tv_enemy = view.findViewById(R.id.enemy);
@@ -53,7 +52,7 @@ public class Hero extends AppCompatActivity {
                     @Override
                     public void onClick(View view) {
 
-                        Intent intent = new Intent(Hero.this, BigBoss.class);
+                        Intent intent = new Intent(Profile_test.this, BigBoss.class);
                         startActivity(intent);
                         show.dismiss();
                     }
@@ -62,7 +61,7 @@ public class Hero extends AppCompatActivity {
                     @Override
                     public void onClick(View view) {
 
-                        Intent intent = new Intent(Hero.this, SmallBoss.class);
+                        Intent intent = new Intent(Profile_test.this, SmallBoss.class);
                         startActivity(intent);
                         show.dismiss();
                     }
@@ -71,7 +70,7 @@ public class Hero extends AppCompatActivity {
                     @Override
                     public void onClick(View view) {
 
-                        Intent intent = new Intent(Hero.this, Enemy.class);
+                        Intent intent = new Intent(Profile_test.this, Enemy.class);
                         startActivity(intent);
                         show.dismiss();
                     }
