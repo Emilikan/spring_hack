@@ -101,6 +101,15 @@ public class ProfileTeamlid extends AppCompatActivity {
             }
         });
 
+        Button dar = findViewById(R.id.button_dar);
+        dar.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                Intent intent = new Intent(ProfileTeamlid.this, Exhange.class);
+                startActivity(intent);
+            }
+        });
+
         fight = findViewById(R.id.button_fight);
         fight.setOnClickListener(new View.OnClickListener() {
             @Override
