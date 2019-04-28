@@ -72,7 +72,6 @@ public class Hero extends AppCompatActivity {
 
                 imageUri = dataSnapshot.child("hero").child(numberOfHero).child("id_image").getValue(String.class);
 
-
                 heroName.setText(name);
                 heroInfo.setText(info);
                 myRef.child("users").child(user.getUid()).child("hero_main").child("name").setValue(name);
