@@ -132,5 +132,5 @@
         android:id="@+id/button_fight"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:text="В бой!" />
+        android:text="В бой!!!" />
 </LinearLayout>
