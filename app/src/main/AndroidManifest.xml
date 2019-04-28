@@ -9,7 +9,10 @@
         android:roundIcon="@mipmap/ic_launcher_round"
         android:supportsRtl="true"
         android:theme="@style/AppTheme">
-        <activity android:name=".BeforeEnemy"></activity>
+        <activity android:name=".MediumEnemy"></activity>
+        <activity android:name=".Review" />
+        <activity android:name=".EnemyLeft" />
+        <activity android:name=".BeforeEnemy" />
         <activity android:name=".Hero" />
         <activity android:name=".Artefact" />
         <activity android:name=".Enemy" />
