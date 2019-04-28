@@ -7,6 +7,7 @@ import android.view.View;
 import android.view.ViewGroup;
 import android.widget.ImageView;
 import android.widget.TextView;
+
 import java.util.List;
 
 class DataAdapter extends RecyclerView.Adapter<DataAdapter.ViewHolder> {
@@ -18,6 +19,7 @@ class DataAdapter extends RecyclerView.Adapter<DataAdapter.ViewHolder> {
         this.phones = phones;
         this.inflater = LayoutInflater.from(context);
     }
+
     @Override
     public DataAdapter.ViewHolder onCreateViewHolder(ViewGroup parent, int viewType) {
 
@@ -39,7 +41,8 @@ class DataAdapter extends RecyclerView.Adapter<DataAdapter.ViewHolder> {
 
     public class ViewHolder extends RecyclerView.ViewHolder {
         final TextView nameView, companyView;
-        ViewHolder(View view){
+
+        ViewHolder(View view) {
             super(view);
             nameView = (TextView) view.findViewById(R.id.name);
             companyView = (TextView) view.findViewById(R.id.company);

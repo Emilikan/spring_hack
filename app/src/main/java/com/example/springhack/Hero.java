@@ -42,7 +42,7 @@ public class Hero extends AppCompatActivity {
     private DatabaseReference myRef;
     private FirebaseAuth mAuth;
     private FirebaseUser user;
-
+    private String type;
     private int count;
 
     private ImageView imageView;
@@ -69,9 +69,18 @@ public class Hero extends AppCompatActivity {
         regCont.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
+                if (type.equals("teamLead")){
+                    Intent intent = new Intent(Hero.this, ProfileTeamlid.class);
+                    startActivity(intent);
+                }
+                else{
+                    if (type.equals("user")){
+                        Intent intent = new Intent(Hero.this, Profile.class);
+                        startActivity(intent);
+                    }
+                }
 
-                Intent intent = new Intent(Hero.this, Profile.class);
-                startActivity(intent);
+
 
             }
         });
@@ -90,6 +99,8 @@ public class Hero extends AppCompatActivity {
                 info = dataSnapshot.child("hero").child(numberOfHero).child("info").getValue(String.class);
 
                 imageUri = dataSnapshot.child("hero").child(numberOfHero).child("id_image").getValue(String.class);
+
+                type = dataSnapshot.child("users").child(user.getUid()).child("type").getValue(String.class);
 
                 heroName.setText(name);
                 heroInfo.setText(info);

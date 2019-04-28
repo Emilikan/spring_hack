@@ -68,6 +68,16 @@
             android:layout_marginBottom="8dp" />
     </LinearLayout>
 
+
+    <ProgressBar
+        android:id="@+id/progressBar2"
+        style="@style/profilProgress"
+        android:layout_marginLeft="60dp"
+        android:layout_marginRight="60dp"
+
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content" />
+
     <TextView
         android:id="@+id/textView9"
         android:layout_width="match_parent"
@@ -76,6 +86,9 @@
 
     <ProgressBar
         android:id="@+id/progressBar"
+        style="@style/profilProgress"
+        android:layout_marginLeft="60dp"
+        android:layout_marginRight="60dp"
         android:layout_width="match_parent"
         android:layout_height="wrap_content" />
 
