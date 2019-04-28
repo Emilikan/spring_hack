@@ -17,7 +17,7 @@ public class EnemyLeft extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_enemy_left);
 
-        Toast.makeText(EnemyLeft.this, "Прикоснитесь к великому!", Toast.LENGTH_SHORT).show();
+        Toast.makeText(EnemyLeft.this, "Прикоснись к великому!", Toast.LENGTH_SHORT).show();
 
         ImageView img = findViewById(R.id.imageView5);
         img.setOnClickListener(new View.OnClickListener() {
