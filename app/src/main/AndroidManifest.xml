@@ -9,9 +9,15 @@
         android:roundIcon="@mipmap/ic_launcher_round"
         android:supportsRtl="true"
         android:theme="@style/AppTheme">
-        <activity android:name=".MediumEnemy"></activity>
-        <activity android:name=".Review" />
-        <activity android:name=".EnemyLeft" />
+        <activity android:name=".MediumEnemy"
+            android:theme="@style/AppTheme.NoActionBar"
+            android:screenOrientation="portrait"></activity>
+        <activity android:name=".Review"
+            android:theme="@style/AppTheme.NoActionBar"
+            android:screenOrientation="portrait"/>
+        <activity android:name=".EnemyLeft"
+            android:theme="@style/AppTheme.NoActionBar"
+            android:screenOrientation="portrait"/>
 
 
 
@@ -22,20 +28,6 @@
             android:theme="@style/AppTheme.NoActionBar"
             android:screenOrientation="portrait">
 
-        <activity android:name=".AddTask"></activity>
-        <activity android:name=".Tasks" />
-        <activity android:name=".ProfileTeamLeader" />
-        <activity android:name=".Hero" />
-        <activity android:name=".BigBoss" />
-        <activity android:name=".Enemy" />
-        <activity android:name=".SmallBoss" />
-        <activity android:name=".ProfileTeamlid" />
-        <activity android:name=".Participants" />
-        <activity android:name=".BeforeEnemy"></activity>
-        <activity android:name=".Artefact" />
-
-        <activity android:name=".MainActivity">
-
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
 
@@ -43,11 +35,49 @@
             </intent-filter>
 
         </activity>
-        <activity android:name=".BigBoss" />
+
+        <activity android:name=".AddTask"
+            android:theme="@style/AppTheme.NoActionBar"
+            android:screenOrientation="portrait"></activity>
+        <activity android:name=".Tasks"
+            android:theme="@style/AppTheme.NoActionBar"
+            android:screenOrientation="portrait"/>
+        <activity android:name=".ProfileTeamlid"
+            android:theme="@style/AppTheme.NoActionBar"
+            android:screenOrientation="portrait"/>
+        <activity android:name=".Hero"
+            android:theme="@style/AppTheme.NoActionBar"
+            android:screenOrientation="portrait"/>
+        <activity android:name=".BigBoss"
+            android:theme="@style/AppTheme.NoActionBar"
+            android:screenOrientation="portrait"/>
+        <activity android:name=".Enemy"
+            android:theme="@style/AppTheme.NoActionBar"
+            android:screenOrientation="portrait"/>
+        <activity android:name=".SmallBoss"
+            android:theme="@style/AppTheme.NoActionBar"
+            android:screenOrientation="portrait"/>
+        <!--<activity android:name=".ProfileTeamlid" />-->
+        <activity android:name=".Participants"
+            android:theme="@style/AppTheme.NoActionBar"
+            android:screenOrientation="portrait"/>
+        <activity android:name=".BeforeEnemy"
+            android:theme="@style/AppTheme.NoActionBar"
+            android:screenOrientation="portrait"></activity>
+        <activity android:name=".Artefact"
+            android:theme="@style/AppTheme.NoActionBar"
+            android:screenOrientation="portrait"/>
+
+        <activity android:name=".MainActivity">
+
+
+
+        </activity>
+        <!--<activity android:name=".BigBoss" />
         <activity android:name=".Enemy" />
         <activity android:name=".SmallBoss" />
         <activity android:name=".MainActivity">
-        </activity>
+        </activity>-->
 
         <activity android:name=".Profile"></activity>
 

@@ -7,4 +7,6 @@
     <string name="name">Имя</string>
     <string name="cont">Продолжить</string>
     <string name="contu"><u>Продолжить ></u></string>
+    <string name="add_users">Добавление участников</string>
+    <string name="add_task">+ Добавить задачу</string>
 </resources>
