@@ -29,7 +29,7 @@ import com.google.firebase.database.ValueEventListener;
 
 
 public class MainActivity extends AppCompatActivity {
-
+    String type;
     private String password;
     private String login;
     private FirebaseAuth.AuthStateListener mAuthStateListener;
@@ -98,7 +98,7 @@ public class MainActivity extends AppCompatActivity {
                             editor.apply();
 
                             if ((dataSnapshot.child("users").child(user.getUid()).child("hero").getValue(String.class)).equals("false")) {
-                                myRef.child("users").child(user.getUid()).child("hero").setValue("true");
+
                                 Intent intent = new Intent(MainActivity.this, SignUp.class);
                                 intent.putExtra("PARAM", 1);
                                 startActivity(intent);
@@ -152,12 +152,28 @@ public class MainActivity extends AppCompatActivity {
                     myRef.addListenerForSingleValueEvent(new ValueEventListener() {
                         @Override
                         public void onDataChange(@NonNull DataSnapshot dataSnapshot) {
+
                             if ((dataSnapshot.child("users").child(user.getUid()).child("hero").getValue(String.class)).equals("false")) {
                                 Toast.makeText(getApplicationContext(),"Нужен персонаж",Toast.LENGTH_SHORT).show();
                             } else {
                                 Toast.makeText(getApplicationContext(),"Успешно",Toast.LENGTH_SHORT).show();
 
                             }
+                            if(dataSnapshot.child("users").child(user.getUid()).child("type").getValue(String.class).equals("user")){
+                                Intent intent = new Intent(MainActivity.this, Profile.class);
+                                intent.putExtra("PARAM", 1);
+                                startActivity(intent);
+                                finish();
+                            }
+                            else{
+                                if (dataSnapshot.child("users").child(user.getUid()).child("type").getValue(String.class).equals("teamLead")) {
+                                    Intent intent = new Intent(MainActivity.this, ProfileTeamlid.class);
+                                    intent.putExtra("PARAM", 1);
+                                    startActivity(intent);
+                                    finish();
+                                }
+                            }
+
 
                         }
 
@@ -167,11 +183,9 @@ public class MainActivity extends AppCompatActivity {
 
                         }
                     });
-                    Intent intent = new Intent(MainActivity.this, Profile.class);
-                    intent.putExtra("PARAM", 1);
-                    startActivity(intent);
-                    finish();
-                            } else {
+
+
+                } else {
                     Toast.makeText(getApplicationContext(), "Авторизация провалена", Toast.LENGTH_LONG).show();
                 }
             }
