@@ -86,6 +86,15 @@ public class Profile extends AppCompatActivity {
             }
         });
 
+        Button dar = findViewById(R.id.button_exc);
+        dar.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                Intent intent = new Intent(Profile.this, Exhange.class);
+                startActivity(intent);
+            }
+        });
+
 
         fight = findViewById(R.id.button_fight);
         fight.setOnClickListener(new View.OnClickListener() {

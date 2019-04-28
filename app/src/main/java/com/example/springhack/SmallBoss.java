@@ -76,7 +76,7 @@ public class SmallBoss extends AppCompatActivity {
                 taskInfo.setText("Задача: " + dataSnapshot.child("team").child(team).child("case").child("taskInfo").getValue(String.class));
                 String imageUri = dataSnapshot.child("team").child(team).child("case").child("id_image").getValue(String.class);
                 FirebaseStorage storage = FirebaseStorage.getInstance();
-                if (imageUri != null) {
+                if (imageUri != null && imageUri != "") {
                     StorageReference storageRef = storage.getReferenceFromUrl(imageUri);
                     storageRef.getDownloadUrl().addOnSuccessListener(new OnSuccessListener<Uri>() {
                         @Override
