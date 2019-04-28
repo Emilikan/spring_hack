@@ -47,7 +47,7 @@ public class SignUp extends AppCompatActivity {
                 myRef.child("users").child(user.getUid()).child("artifact").child("counter").setValue("-1");
                 myRef.child("users").child(user.getUid()).child("hero").setValue("false");
                 myRef.child("users").child(user.getUid()).child("stat").setValue("0");
-                myRef.child("users").child(user.getUid()).child("taskc").child("counter").setValue("-1");
+                myRef.child("users").child(user.getUid()).child("tasks").child("counter").setValue("-1");
                 myRef.child("users").child(user.getUid()).child("topStat").setValue("0");
                 // team
 
