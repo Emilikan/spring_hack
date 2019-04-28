@@ -64,8 +64,7 @@ public class Profile extends AppCompatActivity {
                 String team = dataSnapshot.child("users").child(userId).child("team").getValue(String.class);
                 int i1 = Integer.parseInt(dataSnapshot.child("users").child(userId).child("stat").getValue(String.class));
                 int i2 = Integer.parseInt(dataSnapshot.child("team").child(team).child("case").child("stat").getValue(String.class));
-                int i = i1*100/i2;
-                Toast.makeText(Profile.this, i+"", Toast.LENGTH_SHORT).show();
+                int i = i1 * 100 / i2;
                 heroXP.setProgress(i);
                 bestHeroXp.setProgress(Integer.parseInt(dataSnapshot.child("users").child(userId).child("topStat").getValue(String.class)));
             }
@@ -83,6 +82,15 @@ public class Profile extends AppCompatActivity {
             @Override
             public void onClick(View v) {
                 Intent intent = new Intent(Profile.this, Artefact.class);
+                startActivity(intent);
+            }
+        });
+
+        Button dar = findViewById(R.id.button_exc);
+        dar.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                Intent intent = new Intent(Profile.this, Exhange.class);
                 startActivity(intent);
             }
         });
@@ -124,6 +132,7 @@ public class Profile extends AppCompatActivity {
                     public void onClick(View view) {
 
                         Intent intent = new Intent(Profile.this, BeforeEnemy.class);
+                        intent.putExtra("act", "2");
                         startActivity(intent);
                         show.dismiss();
                     }
