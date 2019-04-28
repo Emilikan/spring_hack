@@ -4,9 +4,12 @@ import android.content.Intent;
 import android.provider.ContactsContract;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
+import android.text.SpannableString;
+import android.text.style.UnderlineSpan;
 import android.view.View;
 import android.widget.Button;
 import android.widget.EditText;
+import android.widget.TextView;
 
 import com.google.firebase.auth.FirebaseAuth;
 
@@ -19,6 +22,11 @@ public class SignIn extends AppCompatActivity {
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_sign_in);
+
+        TextView regLink = (TextView) findViewById(R.id.regLink);
+        SpannableString content = new SpannableString(getString(R.string.firstly));
+        content.setSpan(new UnderlineSpan(), 0, content.length(), 0);
+        regLink.setText(content);
 
         mAuth = FirebaseAuth.getInstance();
 
@@ -34,5 +42,16 @@ public class SignIn extends AppCompatActivity {
 
             }
         });
+
+        regLink.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+
+                Intent intent = new Intent(SignIn.this, SignUp.class);
+                startActivity(intent);
+
+            }
+        });
+
     }
 }
