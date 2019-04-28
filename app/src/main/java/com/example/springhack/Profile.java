@@ -82,6 +82,7 @@ public class Profile extends AppCompatActivity {
             }
         });
 
+
         fight = findViewById(R.id.button_fight);
         fight.setOnClickListener(new View.OnClickListener() {
             @Override
