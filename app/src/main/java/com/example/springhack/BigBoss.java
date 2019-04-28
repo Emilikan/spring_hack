@@ -32,6 +32,7 @@ public class BigBoss extends AppCompatActivity {
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_big_boss);
+        
         myRef = FirebaseDatabase.getInstance().getReference();
         myRef.addValueEventListener(new ValueEventListener() {
 
