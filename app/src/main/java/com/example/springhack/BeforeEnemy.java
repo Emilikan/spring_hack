@@ -49,6 +49,7 @@ public class BeforeEnemy extends AppCompatActivity {
             public void onDataChange(@NonNull DataSnapshot dataSnapshot) {
                 String counterStr = dataSnapshot.child("users").child(userId).child("tasks").child("counter").getValue(String.class);
                 for(int i = 0; i < Integer.parseInt(counterStr)+1; i++){
+                    if((dataSnapshot.child("users").child(userId).child("tasks").child(i+"").child("done").getValue(String.class).equals("false")))
                     alltask.add(dataSnapshot.child("users").child(userId).child("tasks").child(i+"").child("taskInfo").getValue(String.class));
                 }
 

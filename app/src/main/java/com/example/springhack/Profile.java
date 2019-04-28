@@ -61,7 +61,12 @@ public class Profile extends AppCompatActivity {
                 heroNameTV.setText("Имя: " + mName);
                 heroInfoTV.setText("Имя героя: " + mHeroName + "\nИнформация: " + mHeroInfo);
 
-                heroXP.setProgress(Integer.parseInt(dataSnapshot.child("users").child(userId).child("stat").getValue(String.class)));
+                String team = dataSnapshot.child("users").child(userId).child("team").getValue(String.class);
+                int i1 = Integer.parseInt(dataSnapshot.child("users").child(userId).child("stat").getValue(String.class));
+                int i2 = Integer.parseInt(dataSnapshot.child("team").child(team).child("case").child("stat").getValue(String.class));
+                int i = i1*100/i2;
+                Toast.makeText(Profile.this, i+"", Toast.LENGTH_SHORT).show();
+                heroXP.setProgress(i);
                 bestHeroXp.setProgress(Integer.parseInt(dataSnapshot.child("users").child(userId).child("topStat").getValue(String.class)));
             }
 

@@ -35,7 +35,6 @@ public class SmallBoss extends AppCompatActivity {
     private TextView heroInfo;
     private ImageView imageView;
     private TextView taskInfo;
-    private Button go_kik;
     private ProgressBar xp;
 
     private FirebaseDatabase database = FirebaseDatabase.getInstance();
@@ -47,8 +46,6 @@ public class SmallBoss extends AppCompatActivity {
 
     private ListView listView;
 
-    private List<String> allUsers;
-
     private ArrayList<HashMap<String, String>> arrayList = new ArrayList<>();
     private HashMap<String, String> map;
 
@@ -57,8 +54,6 @@ public class SmallBoss extends AppCompatActivity {
         super.onCreate(savedInstanceState);
 
         setContentView(R.layout.activity_small_boss);
-
-        allUsers = new ArrayList<>();
 
         heroName = findViewById(R.id.heroName);
         heroInfo = findViewById(R.id.heroInfo);
@@ -90,9 +85,10 @@ public class SmallBoss extends AppCompatActivity {
                         }
                     });
                 }
-                xp.setProgress(Integer.parseInt(dataSnapshot.child("team").child(team).child("case").child("stat").getValue(String.class)));
+                int sum=0;
                 String counter = dataSnapshot.child("team").child(team).child("users").child("counter").getValue(String.class);
                 for(int i= 0; i < Integer.parseInt(counter)+1; i++){
+                    sum+=Integer.parseInt(dataSnapshot.child("team").child(team).child("users").child(i+"").child("xp").getValue(String.class));
                     map = new HashMap<>();
                     map.put("Name", dataSnapshot.child("team").child(team).child("users").child(i+"").child("name").getValue(String.class));
                     map.put("Xp", dataSnapshot.child("team").child(team).child("users").child(i+"").child("xp").getValue(String.class));
@@ -104,6 +100,8 @@ public class SmallBoss extends AppCompatActivity {
                         new int[]{android.R.id.text1, android.R.id.text2});
                 listView.setAdapter(adapter);
 
+                xp.setProgress(Integer.parseInt(dataSnapshot.child("team").child(team).child("case").child("stat").getValue(String.class))-sum);
+
             }
 
             @Override
@@ -112,14 +110,6 @@ public class SmallBoss extends AppCompatActivity {
             }
         });
 
-
-        go_kik = findViewById(R.id.button_fight);
-        go_kik.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View v) {
-
-            }
-        });
     }
 
 }
