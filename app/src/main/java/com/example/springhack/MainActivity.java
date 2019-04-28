@@ -30,8 +30,8 @@ import com.google.firebase.database.ValueEventListener;
 
 public class MainActivity extends AppCompatActivity {
     String type;
-    private String password;
-    private String login;
+    private String password = "";
+    private String login = "";
     private FirebaseAuth.AuthStateListener mAuthStateListener;
     private FirebaseAuth mAuth;
     private FirebaseDatabase database = FirebaseDatabase.getInstance();
@@ -52,7 +52,7 @@ public class MainActivity extends AppCompatActivity {
         signIn.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                sidnInUser();
+                signInUser();
             }
         });
         signUp.setOnClickListener(new View.OnClickListener() {
@@ -123,7 +123,7 @@ public class MainActivity extends AppCompatActivity {
         });
     }
 
-    private void sidnInUser() {
+    private void signInUser() {
         login = ((EditText) findViewById(R.id.Email)).getText().toString();
         password = ((EditText) findViewById(R.id.Password)).getText().toString();
         mAuth = FirebaseAuth.getInstance();
@@ -162,28 +162,21 @@ public class MainActivity extends AppCompatActivity {
                                 SharedPreferences.Editor editor = preferences.edit();
                                 editor.putString("id", user.getUid() + "");
                                 editor.apply();
-                            }
-                            if (dataSnapshot.child("users").child(user.getUid()).child("type").getValue(String.class).equals("user")) {
-                                SharedPreferences preferences = PreferenceManager.getDefaultSharedPreferences(MainActivity.this);
-                                SharedPreferences.Editor editor = preferences.edit();
-                                editor.putString("id", user.getUid() + "");
-                                editor.apply();
-                                Intent intent = new Intent(MainActivity.this, Profile.class);
-                                intent.putExtra("PARAM", 1);
-                                startActivity(intent);
-                                finish();
-                            } else {
-                                if (dataSnapshot.child("users").child(user.getUid()).child("type").getValue(String.class).equals("teamLead")) {
-                                    SharedPreferences preferences = PreferenceManager.getDefaultSharedPreferences(MainActivity.this);
-                                    SharedPreferences.Editor editor = preferences.edit();
-                                    editor.putString("id", user.getUid() + "");
-                                    editor.apply();
-                                    Intent intent = new Intent(MainActivity.this, ProfileTeamlid.class);
+                                if (dataSnapshot.child("users").child(user.getUid()).child("type").getValue(String.class).equals("user")) {
+                                    Intent intent = new Intent(MainActivity.this, Profile.class);
                                     intent.putExtra("PARAM", 1);
                                     startActivity(intent);
                                     finish();
+                                } else {
+                                    if (dataSnapshot.child("users").child(user.getUid()).child("type").getValue(String.class).equals("teamLead")) {
+                                        Intent intent = new Intent(MainActivity.this, ProfileTeamlid.class);
+                                        intent.putExtra("PARAM", 1);
+                                        startActivity(intent);
+                                        finish();
+                                    }
                                 }
                             }
+
 
 
                         }
