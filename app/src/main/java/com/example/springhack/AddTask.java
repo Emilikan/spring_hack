@@ -151,6 +151,7 @@ public class AddTask extends AppCompatActivity {
                                 myRef.child("users").child(idUser).child("tasks").child(newCounter).child("stat").setValue(stat);
                                 myRef.child("users").child(idUser).child("tasks").child(newCounter).child("taskInfo").setValue(info);
                                 myRef.child("users").child(idUser).child("tasks").child("counter").setValue(newCounter);
+                                myRef.child("team").child(team).child("case").child(number).child("doneTeam").setValue("true");
                                 Toast.makeText(AddTask.this, "Пожелаем удачи игроку", Toast.LENGTH_SHORT).show();
                             }
 

@@ -42,6 +42,8 @@ public class Tasks extends AppCompatActivity {
 
     private Random random = new Random();
 
+    private List<Integer> id2;
+
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -49,6 +51,7 @@ public class Tasks extends AppCompatActivity {
 
         allTasks = new ArrayList<>();
         listView = findViewById(R.id.list);
+        id2 = new ArrayList<>();
 
         SharedPreferences preferences = PreferenceManager.getDefaultSharedPreferences(Tasks.this);
         userId = preferences.getString("id", null);
@@ -60,7 +63,10 @@ public class Tasks extends AppCompatActivity {
                 final String team = dataSnapshot.child("users").child(userId).child("team").getValue(String.class);
                 String counterStr = dataSnapshot.child("team").child(team).child("case").child("counter").getValue(String.class);
                 for (int i = 0; i < Integer.parseInt(counterStr) + 1; i++) {
-                    allTasks.add(dataSnapshot.child("team").child(team).child("case").child(i + "").child("info").getValue(String.class));
+                    if(dataSnapshot.child("team").child(team).child("case").child(i + "").child("doneTeam").getValue(String.class).equals("false")) {
+                        allTasks.add(dataSnapshot.child("team").child(team).child("case").child(i + "").child("info").getValue(String.class));
+                        id2.add(i);
+                    }
                 }
 
                 ArrayAdapter<String> adapter = new ArrayAdapter<>(Tasks.this, android.R.layout.simple_list_item_1, allTasks);
@@ -71,7 +77,7 @@ public class Tasks extends AppCompatActivity {
                     public void onItemClick(AdapterView<?> parent, View itemClicked, int position, long id) {
                         if ((dataSnapshot.child("team").child(team).child("case").child("isHero").getValue(String.class)).equals("true")) {
                             Intent intent = new Intent(Tasks.this, AddTask.class);
-                            intent.putExtra("numberOfTaskForAdmin", position + "");
+                            intent.putExtra("numberOfTaskForAdmin", id2.get(position) + "");
                             startActivity(intent);
                         } else {
                             AlertDialog.Builder builder = new AlertDialog.Builder(Tasks.this);
@@ -129,7 +135,7 @@ public class Tasks extends AppCompatActivity {
                                 myRef.child("team").child(team).child("case").child(i + "").child("name").setValue(nameOFEvil);
                                 myRef.child("team").child(team).child("case").child(i + "").child("infoOfPers").setValue(infoOFEvil);
                                 myRef.child("team").child(team).child("case").child(i + "").child("id_image").setValue(idOFEvil);
-                                myRef.child("team").child(team).child("case").child(i + "").child("done").setValue("false");
+                                myRef.child("team").child(team).child("case").child(i + "").child("doneTeam").setValue("false");
 
                             }
 
