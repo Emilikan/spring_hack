@@ -74,7 +74,7 @@ public class SmallBoss extends AppCompatActivity {
                 heroInfo.setText("Информация о персонаже: " + dataSnapshot.child("team").child(team).child("case").child("info").getValue(String.class));
                 heroName.setText("Имя персонажа: " + dataSnapshot.child("team").child(team).child("case").child("name").getValue(String.class));
                 taskInfo.setText("Задача: " + dataSnapshot.child("team").child(team).child("case").child("taskInfo").getValue(String.class));
-                String imageUri = dataSnapshot.child("team").child(team).child("case").child("id_image").getValue(String.class);
+                String imageUri = dataSnapshot.child("team").child("team1").child("case").child("0").child("id_image").getValue(String.class);
                 FirebaseStorage storage = FirebaseStorage.getInstance();
                 if (imageUri != null && imageUri != "") {
                     StorageReference storageRef = storage.getReferenceFromUrl(imageUri);

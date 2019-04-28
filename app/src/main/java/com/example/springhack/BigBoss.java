@@ -1,6 +1,14 @@
 package com.example.springhack;
 
 import android.content.DialogInterface;
+
+import android.os.Bundle;
+import android.support.v7.app.AlertDialog;
+import android.support.v7.app.AppCompatActivity;
+import android.view.View;
+import android.widget.Button;
+import android.widget.ImageButton;
+
 import android.content.Intent;
 import android.os.Bundle;
 import android.support.v7.app.AlertDialog;
@@ -18,6 +26,7 @@ import com.google.firebase.database.ValueEventListener;
 
 import java.util.ArrayList;
 import java.util.Objects;
+
 
 public class BigBoss extends AppCompatActivity {
     DataAdapterForRecyclerViewTopComands adapter;

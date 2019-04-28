@@ -1,5 +1,7 @@
 package com.example.springhack;
 
+import android.content.Intent;
+
 import android.content.DialogInterface;
 import android.content.Intent;
 import android.content.SharedPreferences;
@@ -7,6 +9,7 @@ import android.net.Uri;
 import android.preference.PreferenceManager;
 import android.support.annotation.NonNull;
 import android.support.v7.app.AlertDialog;
+
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
 import android.view.View;
@@ -56,6 +59,7 @@ public class AddTask extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_add_task);
 
+
         imageView = findViewById(R.id.logo);
         heroInfo = findViewById(R.id.heroInfo);
         heroName = findViewById(R.id.heroName);
@@ -72,6 +76,7 @@ public class AddTask extends AppCompatActivity {
 
         myRef = database.getReference();
         myRef.addListenerForSingleValueEvent(new ValueEventListener() {
+
             @Override
             public void onDataChange(@NonNull DataSnapshot dataSnapshot) {
                 team = dataSnapshot.child("users").child(userId).child("team").getValue(String.class);
