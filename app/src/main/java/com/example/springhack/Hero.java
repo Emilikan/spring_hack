@@ -1,5 +1,6 @@
 package com.example.springhack;
 
+import android.content.Intent;
 import android.net.Uri;
 import android.os.Build;
 import android.support.annotation.NonNull;
@@ -7,6 +8,9 @@ import android.support.annotation.NonNull;
 import android.support.annotation.RequiresApi;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
+import android.text.SpannableString;
+import android.text.style.UnderlineSpan;
+import android.view.View;
 import android.widget.ImageView;
 import android.widget.ProgressBar;
 import android.widget.TextView;
@@ -56,6 +60,21 @@ public class Hero extends AppCompatActivity {
         imageView = findViewById(R.id.imageView2);
 
         user = mAuth.getInstance().getCurrentUser();
+
+        TextView regCont = (TextView) findViewById(R.id.regCont);
+        SpannableString content = new SpannableString(getString(R.string.firstly));
+        content.setSpan(new UnderlineSpan(), 0, content.length(), 0);
+        regCont.setText(content);
+
+        regCont.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+
+                Intent intent = new Intent(Hero.this, Profile.class);
+                startActivity(intent);
+
+            }
+        });
 
         final Random random = new Random();
 
