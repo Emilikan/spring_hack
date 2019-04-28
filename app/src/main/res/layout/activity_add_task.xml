@@ -1,36 +1,95 @@
 <?xml version="1.0" encoding="utf-8"?>
 <LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     android:orientation="vertical"
-    tools:context=".AddTask">
+    tools:context=".Enemy">
+
+
+    <RelativeLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content">
+
+        <ImageView
+            android:id="@+id/logo"
+            android:layout_width="match_parent"
+            android:layout_height="247dp"
+            android:layout_centerHorizontal="true"
+            app:srcCompat="@drawable/ic_user_3"
+            tools:ignore="VectorDrawableCompat" />
+    </RelativeLayout>
+
+    <RelativeLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content">
+
+        <TextView
+            android:id="@+id/heroName"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_centerInParent="true"
+            android:text="" />
+    </RelativeLayout>
+
+    <LinearLayout
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:orientation="vertical">
+
+
+        <TextView
+            android:id="@+id/heroInfo"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_centerHorizontal="true"
+            android:layout_centerVertical="true"
+            android:text="" />
+
+        <TextView
+            android:id="@+id/taskInfo"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_centerHorizontal="true"
+            android:layout_centerVertical="true"
+            android:text="" />
+
+    </LinearLayout>
+
 
     <TextView
-        android:id="@+id/textView10"
-        android:layout_width="205dp"
-        android:layout_height="60dp"
-        android:text="Создание задачи" />
+        android:id="@+id/link"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginLeft="25dp"
+        android:text="Ссылка на репозиторий" />
 
-    <EditText
-        android:id="@+id/taskName"
-        android:layout_width="150dp"
-        android:layout_height="91dp"
-        android:ems="10"
-        android:hint="Рабочее название"
-        android:inputType="textPersonName" />
+    <TextView
+        android:id="@+id/textViewe"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginLeft="25dp"
+        android:text="XH:" />
 
-    <EditText
-        android:id="@+id/taskHp"
-        android:layout_width="150dp"
-        android:layout_height="59dp"
-        android:ems="10"
-        android:hint="HP"
-        android:inputType="textPersonName" />
+    <ProgressBar
+        android:id="@+id/progressBar2"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:visibility="visible" />
 
-    <Button
-        android:id="@+id/button"
-        android:layout_width="205dp"
-        android:layout_height="80dp"
-        android:text="@android:string/ok" />
+
+
+    <TextView
+        android:id="@+id/textViewe12"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginLeft="25dp"
+        android:text="Выберите солдата:" />
+    <ListView
+        android:layout_width="match_parent"
+        android:id="@+id/listView2"
+        android:layout_height="match_parent">
+    </ListView>
+
 </LinearLayout>

@@ -82,7 +82,7 @@ public class MainActivity extends AppCompatActivity {
             }
         };
 
-        mAuth.signInWithEmailAndPassword(login, password).addOnCompleteListener(this, new OnCompleteListener<AuthResult>()  {
+        mAuth.signInWithEmailAndPassword(login, password).addOnCompleteListener(this, new OnCompleteListener<AuthResult>() {
             @Override
             public void onComplete(@NonNull Task<AuthResult> task) {
                 if (task.isSuccessful()) {
@@ -122,7 +122,8 @@ public class MainActivity extends AppCompatActivity {
             }
         });
     }
-    private void sidnInUser(){
+
+    private void sidnInUser() {
         login = ((EditText) findViewById(R.id.Email)).getText().toString();
         password = ((EditText) findViewById(R.id.Password)).getText().toString();
         mAuth = FirebaseAuth.getInstance();
@@ -140,7 +141,7 @@ public class MainActivity extends AppCompatActivity {
             }
         };
 
-        mAuth.signInWithEmailAndPassword(login, password).addOnCompleteListener(this, new OnCompleteListener<AuthResult>()  {
+        mAuth.signInWithEmailAndPassword(login, password).addOnCompleteListener(this, new OnCompleteListener<AuthResult>() {
             @Override
             public void onComplete(@NonNull Task<AuthResult> task) {
                 if (task.isSuccessful()) {
@@ -154,19 +155,29 @@ public class MainActivity extends AppCompatActivity {
                         public void onDataChange(@NonNull DataSnapshot dataSnapshot) {
 
                             if ((dataSnapshot.child("users").child(user.getUid()).child("hero").getValue(String.class)).equals("false")) {
-                                Toast.makeText(getApplicationContext(),"Нужен персонаж",Toast.LENGTH_SHORT).show();
+                                Toast.makeText(getApplicationContext(), "Нужен персонаж", Toast.LENGTH_SHORT).show();
                             } else {
-                                Toast.makeText(getApplicationContext(),"Успешно",Toast.LENGTH_SHORT).show();
-
+                                Toast.makeText(getApplicationContext(), "Успешно", Toast.LENGTH_SHORT).show();
+                                SharedPreferences preferences = PreferenceManager.getDefaultSharedPreferences(MainActivity.this);
+                                SharedPreferences.Editor editor = preferences.edit();
+                                editor.putString("id", user.getUid() + "");
+                                editor.apply();
                             }
-                            if(dataSnapshot.child("users").child(user.getUid()).child("type").getValue(String.class).equals("user")){
+                            if (dataSnapshot.child("users").child(user.getUid()).child("type").getValue(String.class).equals("user")) {
+                                SharedPreferences preferences = PreferenceManager.getDefaultSharedPreferences(MainActivity.this);
+                                SharedPreferences.Editor editor = preferences.edit();
+                                editor.putString("id", user.getUid() + "");
+                                editor.apply();
                                 Intent intent = new Intent(MainActivity.this, Profile.class);
                                 intent.putExtra("PARAM", 1);
                                 startActivity(intent);
                                 finish();
-                            }
-                            else{
+                            } else {
                                 if (dataSnapshot.child("users").child(user.getUid()).child("type").getValue(String.class).equals("teamLead")) {
+                                    SharedPreferences preferences = PreferenceManager.getDefaultSharedPreferences(MainActivity.this);
+                                    SharedPreferences.Editor editor = preferences.edit();
+                                    editor.putString("id", user.getUid() + "");
+                                    editor.apply();
                                     Intent intent = new Intent(MainActivity.this, ProfileTeamlid.class);
                                     intent.putExtra("PARAM", 1);
                                     startActivity(intent);

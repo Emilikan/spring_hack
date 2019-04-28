@@ -5,9 +5,9 @@ public class TasksForRecyclerView {
     private String name;
     private String company;
 
-    public TasksForRecyclerView(String name, String company){
+    public TasksForRecyclerView(String name, String company) {
 
-        this.name=name;
+        this.name = name;
         this.company = company;
     }
 

@@ -74,7 +74,7 @@ public class Enemy extends AppCompatActivity {
                 href.setText("Ссылка: " + dataSnapshot.child("users").child(userId).child("tasks").child(number).child("href").getValue(String.class));
                 String imageUri = dataSnapshot.child("users").child(userId).child("tasks").child(number).child("id_image").getValue(String.class);
                 FirebaseStorage storage = FirebaseStorage.getInstance();
-                if(imageUri!=null) {
+                if (imageUri != null) {
                     StorageReference storageRef = storage.getReferenceFromUrl(imageUri);
                     storageRef.getDownloadUrl().addOnSuccessListener(new OnSuccessListener<Uri>() {
                         @Override
@@ -86,9 +86,9 @@ public class Enemy extends AppCompatActivity {
 
                 String team = dataSnapshot.child("users").child(userId).child("team").getValue(String.class);
 
-                int i1 = Integer.parseInt(dataSnapshot.child("users").child(userId).child("tasks").child(number+"").child("stat").getValue(String.class));
+                int i1 = Integer.parseInt(dataSnapshot.child("users").child(userId).child("tasks").child(number + "").child("stat").getValue(String.class));
                 int i2 = Integer.parseInt(dataSnapshot.child("team").child(team).child("case").child("stat").getValue(String.class));
-                int i = i1*100/i2;
+                int i = i1 * 100 / i2;
 
                 xp.setProgress(i);
 

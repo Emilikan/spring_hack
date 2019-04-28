@@ -10,8 +10,6 @@ import android.view.View;
 import android.widget.AdapterView;
 import android.widget.ArrayAdapter;
 import android.widget.ListView;
-import android.widget.TextView;
-import android.widget.Toast;
 
 import com.google.firebase.database.DataSnapshot;
 import com.google.firebase.database.DatabaseError;
@@ -48,9 +46,9 @@ public class BeforeEnemy extends AppCompatActivity {
             @Override
             public void onDataChange(@NonNull DataSnapshot dataSnapshot) {
                 String counterStr = dataSnapshot.child("users").child(userId).child("tasks").child("counter").getValue(String.class);
-                for(int i = 0; i < Integer.parseInt(counterStr)+1; i++){
-                    if((dataSnapshot.child("users").child(userId).child("tasks").child(i+"").child("done").getValue(String.class).equals("false")))
-                    alltask.add(dataSnapshot.child("users").child(userId).child("tasks").child(i+"").child("taskInfo").getValue(String.class));
+                for (int i = 0; i < Integer.parseInt(counterStr) + 1; i++) {
+                    if ((dataSnapshot.child("users").child(userId).child("tasks").child(i + "").child("done").getValue(String.class).equals("false")))
+                        alltask.add(dataSnapshot.child("users").child(userId).child("tasks").child(i + "").child("taskInfo").getValue(String.class));
                 }
 
                 ArrayAdapter<String> adapter = new ArrayAdapter<>(BeforeEnemy.this, android.R.layout.simple_list_item_1, alltask);
