@@ -5,7 +5,7 @@
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     android:orientation="vertical"
-    tools:context=".Profile_test" >
+    tools:context=".Enemy">
 
 
     <RelativeLayout
@@ -14,8 +14,8 @@
 
         <ImageView
             android:id="@+id/logo"
-            android:layout_width="30dp"
-            android:layout_height="wrap_content"
+            android:layout_width="match_parent"
+            android:layout_height="247dp"
             android:layout_centerHorizontal="true"
             app:srcCompat="@drawable/ic_user_3"
             tools:ignore="VectorDrawableCompat" />
@@ -30,31 +30,40 @@
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_centerInParent="true"
-            android:text="Лютый" />
+            android:text="" />
     </RelativeLayout>
-    <RelativeLayout
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content">
+
+    <LinearLayout
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:orientation="vertical">
+
 
         <TextView
             android:id="@+id/heroInfo"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:layout_centerVertical="true"
             android:layout_centerHorizontal="true"
-            android:text="Ходит на забивы, ебашит всех без разбора. Любит ебать в жопу." />
-    </RelativeLayout>
+            android:layout_centerVertical="true"
+            android:text="" />
 
+        <TextView
+            android:id="@+id/taskInfo"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_centerHorizontal="true"
+            android:layout_centerVertical="true"
+            android:text="" />
+
+    </LinearLayout>
 
 
     <TextView
-        android:id="@+id/textView2"
+        android:id="@+id/link"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_marginLeft="25dp"
         android:text="Ссылка на репозиторий" />
-
-
 
     <TextView
         android:id="@+id/textViewe"
@@ -73,5 +82,7 @@
         android:id="@+id/button_fight"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:text="На нести удар!" />
+        android:text="Нанести удар!" />
+
 </LinearLayout>
+
