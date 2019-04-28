@@ -32,6 +32,8 @@ public class BeforeEnemy extends AppCompatActivity {
 
     private List<Integer> id2;
 
+    private String a;
+
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -43,6 +45,8 @@ public class BeforeEnemy extends AppCompatActivity {
 
         SharedPreferences preferences = PreferenceManager.getDefaultSharedPreferences(BeforeEnemy.this);
         userId = preferences.getString("id", null);
+
+        a = getIntent().getStringExtra("act");
 
         myRef = database.getReference();
         myRef.addListenerForSingleValueEvent(new ValueEventListener() {
@@ -70,9 +74,17 @@ public class BeforeEnemy extends AppCompatActivity {
         listView.setOnItemClickListener(new AdapterView.OnItemClickListener() {
             @Override
             public void onItemClick(AdapterView<?> parent, View itemClicked, int position, long id) {
-                Intent intent = new Intent(BeforeEnemy.this, Enemy.class);
-                intent.putExtra("numberOfTask", id2.get(position) + "");
-                startActivity(intent);
+                if(a.equals("1")) {
+                    Intent intent = new Intent(BeforeEnemy.this, Enemy.class);
+                    intent.putExtra("numberOfTask", id2.get(position) + "");
+                    intent.putExtra("act1", "1");
+                    startActivity(intent);
+                } else if(a.equals("2")) {
+                    Intent intent = new Intent(BeforeEnemy.this, Enemy.class);
+                    intent.putExtra("numberOfTask", id2.get(position) + "");
+                    intent.putExtra("act1", "2");
+                    startActivity(intent);
+                }
 
             }
         });

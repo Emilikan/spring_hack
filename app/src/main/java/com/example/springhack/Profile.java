@@ -132,6 +132,7 @@ public class Profile extends AppCompatActivity {
                     public void onClick(View view) {
 
                         Intent intent = new Intent(Profile.this, BeforeEnemy.class);
+                        intent.putExtra("act", "2");
                         startActivity(intent);
                         show.dismiss();
                     }

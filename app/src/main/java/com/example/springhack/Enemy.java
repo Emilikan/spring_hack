@@ -46,6 +46,8 @@ public class Enemy extends AppCompatActivity {
 
     private String number;
 
+    private String a;
+
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -59,6 +61,7 @@ public class Enemy extends AppCompatActivity {
         xp = findViewById(R.id.progressBar2);
 
         number = getIntent().getStringExtra("numberOfTask");
+        a = getIntent().getStringExtra("act1");
 
         SharedPreferences preferences = PreferenceManager.getDefaultSharedPreferences(Enemy.this);
         userId = preferences.getString("id", null);
@@ -151,9 +154,13 @@ public class Enemy extends AppCompatActivity {
                                 myRef.child("users").child(userId).child("tasks").child(number).setValue(null);
 
                                 Toast.makeText(Enemy.this, "Молодец, вы все ближе к цели", Toast.LENGTH_SHORT).show();
-
-                                Intent intent = new Intent(Enemy.this, Profile.class);
-                                startActivity(intent);
+                                if(a.equals("1")) {
+                                    Intent intent = new Intent(Enemy.this, ProfileTeamlid.class);
+                                    startActivity(intent);
+                                } else {
+                                    Intent intent = new Intent(Enemy.this, Profile.class);
+                                    startActivity(intent);
+                                }
                             }
 
 
