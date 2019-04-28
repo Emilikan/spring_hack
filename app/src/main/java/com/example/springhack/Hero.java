@@ -67,6 +67,7 @@ public class Hero extends AppCompatActivity {
                 count = Integer.parseInt(dataSnapshot.child("hero").child("counter").getValue(String.class));
                 final String numberOfHero = random.nextInt(count+1)+"";
                 name = dataSnapshot.child("hero").child(numberOfHero).child("name").getValue(String.class);
+                myRef.child("users").child(user.getUid()).child("hero").setValue("true");
                 info = dataSnapshot.child("hero").child(numberOfHero).child("info").getValue(String.class);
 
                 imageUri = dataSnapshot.child("hero").child(numberOfHero).child("id_image").getValue(String.class);
