@@ -93,10 +93,6 @@
                                 app:srcCompat="@drawable/ic_goal"
                                 tools:ignore="VectorDrawableCompat" />
 
-                            <Space
-                                android:layout_width="wrap_content"
-                                android:layout_height="wrap_content"
-                                android:layout_weight="1" />
 
                             <ImageView
                                 android:id="@+id/imageView3"
@@ -105,11 +101,6 @@
                                 android:layout_weight="1"
                                 app:srcCompat="@drawable/ic_goal_1"
                                 tools:ignore="VectorDrawableCompat" />
-
-                            <Space
-                                android:layout_width="wrap_content"
-                                android:layout_height="wrap_content"
-                                android:layout_weight="1" />
 
                             <ImageView
                                 android:id="@+id/imageView4"
@@ -165,7 +156,7 @@
                     android:layout_marginTop="32dp"
                     android:text="В бой!" />
 
-    </android.support.v7.widget.CardView>
+
 
 
             </LinearLayout>

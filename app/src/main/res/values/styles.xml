@@ -17,7 +17,6 @@
     <style name="inputPrimary">
 
         <item name="android:background">@drawable/input_primary</item>
-        <item name="android:fontFamily">@font/rubik</item>
         <item name="android:paddingLeft">20dp</item>
         <item name="android:paddingTop">12dp</item>
         <item name="android:paddingBottom">12dp</item>
@@ -33,7 +32,6 @@
     <style name="inputDark">
 
         <item name="android:background">@drawable/input_dark</item>
-        <item name="android:fontFamily">@font/rubik</item>
         <item name="android:paddingLeft">20dp</item>
         <item name="android:paddingTop">12dp</item>
         <item name="android:paddingBottom">12dp</item>
@@ -45,7 +43,6 @@
     <style name="buttonPrimary">
 
         <item name="android:background">@drawable/button_primary</item>
-        <item name="android:fontFamily">@font/rubik</item>
         <item name="android:textColor">@android:color/white</item>
         <item name="android:gravity">center</item>
         <item name="android:shadowColor">@android:color/black</item>
@@ -56,7 +53,6 @@
     <style name="buttonLight">
 
         <item name="android:background">@drawable/button_light</item>
-        <item name="android:fontFamily">@font/rubik_medium</item>
         <item name="android:textColor">@android:color/white</item>
         <item name="android:gravity">center</item>
         <item name="android:shadowColor">@android:color/black</item>
@@ -66,7 +62,7 @@
 
     <style name="buttonBattle">
 
-        <item name="android:fontFamily">@font/rubik</item>
+
         <item name="android:textColor">@color/colorAccent</item>
 
     </style>
@@ -84,9 +80,9 @@
         <item name="colorControlHighlight">#ff6d00</item>
         <item name="android:progressDrawable">@drawable/profil_progress</item>
         <item name="android:minWidth">200dp</item>
-        <item name="android:shadowDx">4dp</item>
-        <item name="android:shadowDy">4dp</item>
-        <item name="android:shadowRadius">8dp</item>
+        <item name="android:shadowDx">4</item>
+        <item name="android:shadowDy">4</item>
+        <item name="android:shadowRadius">8</item>
         <item name="android:shadowColor">@android:color/black</item>
 
     </style>
