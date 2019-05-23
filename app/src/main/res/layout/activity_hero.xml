@@ -45,14 +45,15 @@
 
         <TextView
             android:id="@+id/regCont"
-            android:layout_width="match_parent"
+            android:layout_width="395dp"
             android:layout_height="wrap_content"
-            android:layout_marginTop="120dp"
             android:fontFamily="@font/rubik"
             android:text="@string/contu"
             android:textAlignment="center"
             android:textColor="@color/colorAccent"
-            android:textSize="20sp" />
+            android:textSize="20sp"
+            tools:layout_editor_absoluteX="8dp"
+            tools:layout_editor_absoluteY="4dp" />
     </LinearLayout>
 
 

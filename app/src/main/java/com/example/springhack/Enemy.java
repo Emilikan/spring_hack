@@ -41,6 +41,8 @@ public class Enemy extends AppCompatActivity {
 
     private String number;
 
+    private String a;
+
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -54,6 +56,7 @@ public class Enemy extends AppCompatActivity {
         xp = findViewById(R.id.progressBar2);
 
         number = getIntent().getStringExtra("numberOfTask");
+        a = getIntent().getStringExtra("act1");
 
         SharedPreferences preferences = PreferenceManager.getDefaultSharedPreferences(Enemy.this);
         userId = preferences.getString("id", null);
@@ -63,13 +66,35 @@ public class Enemy extends AppCompatActivity {
         myRef.addListenerForSingleValueEvent(new ValueEventListener() {
             @Override
             public void onDataChange(@NonNull DataSnapshot dataSnapshot) {
+
+                String team = dataSnapshot.child("users").child(userId).child("team").getValue(String.class);
+                if(dataSnapshot.child("users").child(userId).child("tasks").child(number + "").child("stat").getValue(String.class)!=null) {
+                    int i1 = Integer.parseInt(dataSnapshot.child("users").child(userId).child("tasks").child(number + "").child("stat").getValue(String.class));
+                    int i2 = Integer.parseInt(dataSnapshot.child("team").child(team).child("case").child("stat").getValue(String.class));
+                    int i = i1 * 100 / i2;
+
+                    xp.setProgress(i);
+                } else {
+                    String newStr = dataSnapshot.child("users").child(userId).child("tasks").child(number + "").child("stat").getValue(String.class);
+                    while (newStr == null) {
+                        int n = Integer.parseInt(number) + 1;
+                        number = Integer.toString(n);
+                        newStr = dataSnapshot.child("users").child(userId).child("tasks").child(number + "").child("stat").getValue(String.class);
+                    }
+
+                    int i1 = Integer.parseInt(dataSnapshot.child("users").child(userId).child("tasks").child(number + "").child("stat").getValue(String.class));
+                    int i2 = Integer.parseInt(dataSnapshot.child("team").child(team).child("case").child("stat").getValue(String.class));
+                    int i = i1 * 100 / i2;
+
+                    xp.setProgress(i);
+                }
                 heroInfo.setText("Информация о герое: " + dataSnapshot.child("users").child(userId).child("tasks").child(number).child("info").getValue(String.class));
                 heroName.setText("Имя героя: " + dataSnapshot.child("users").child(userId).child("tasks").child(number).child("name").getValue(String.class));
                 taskInfo.setText("Задача: " + dataSnapshot.child("users").child(userId).child("tasks").child(number).child("taskInfo").getValue(String.class));
                 href.setText("Ссылка: " + dataSnapshot.child("users").child(userId).child("tasks").child(number).child("href").getValue(String.class));
                 String imageUri = dataSnapshot.child("users").child(userId).child("tasks").child(number).child("id_image").getValue(String.class);
                 FirebaseStorage storage = FirebaseStorage.getInstance();
-                if(imageUri!=null) {
+                if (imageUri != null) {
                     StorageReference storageRef = storage.getReferenceFromUrl(imageUri);
                     storageRef.getDownloadUrl().addOnSuccessListener(new OnSuccessListener<Uri>() {
                         @Override
@@ -78,14 +103,6 @@ public class Enemy extends AppCompatActivity {
                         }
                     });
                 }
-
-                String team = dataSnapshot.child("users").child(userId).child("team").getValue(String.class);
-
-                int i1 = Integer.parseInt(dataSnapshot.child("users").child(userId).child("tasks").child(number+"").child("stat").getValue(String.class));
-                int i2 = Integer.parseInt(dataSnapshot.child("team").child(team).child("case").child("stat").getValue(String.class));
-                int i = i1*100/i2;
-
-                xp.setProgress(i);
 
             }
 
@@ -119,11 +136,26 @@ public class Enemy extends AppCompatActivity {
                                 myRef.child("users").child(userId).child("stat").setValue(Integer.toString(i));
 
                                 myRef.child("users").child(userId).child("tasks").child(number).child("done").setValue("true");
+                                String team = dataSnapshot.child("users").child(userId).child("team").getValue(String.class);
+                                //String id = dataSnapshot.child("team").child(team).child("users").child("0").child("id").getValue(String.class);
+                                String counter = dataSnapshot.child("team").child(team).child("users").child("counter").getValue(String.class);
+                                for (int ir = 0; ir < Integer.parseInt(counter)+1; ir++) {
+                                    String id = dataSnapshot.child("team").child(team).child("users").child(ir+"").child("id").getValue(String.class);
+                                    if(userId.equals(id)) {
+                                        myRef.child("team").child(team).child("users").child(ir+"").child("xp").setValue(i+"");
+                                        break;
+                                    }
+                                }
+                                myRef.child("users").child(userId).child("tasks").child(number).setValue(null);
 
                                 Toast.makeText(Enemy.this, "Молодец, вы все ближе к цели", Toast.LENGTH_SHORT).show();
-
-                                Intent intent = new Intent(Enemy.this, Profile.class);
-                                startActivity(intent);
+                                if(a.equals("1")) {
+                                    Intent intent = new Intent(Enemy.this, ProfileTeamlid.class);
+                                    startActivity(intent);
+                                } else {
+                                    Intent intent = new Intent(Enemy.this, Profile.class);
+                                    startActivity(intent);
+                                }
                             }
 
 
