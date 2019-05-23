@@ -50,7 +50,9 @@
                     android:id="@+id/heroInfo"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
+                    android:layout_gravity="center_horizontal"
                     android:fontFamily="@font/rubik_light"
+                    android:gravity="center_horizontal"
                     android:textColor="@color/colorAccent"
                     android:textSize="20sp" />
 
@@ -163,6 +165,7 @@
                     android:layout_marginRight="5dp"
                     android:text="В бой!" />
 
+
                 <Button
                     android:id="@+id/button_exc"
                     style="@style/buttonBattle.Orange"
@@ -173,6 +176,7 @@
                     android:layout_marginTop="32dp"
                     android:text="Обмен" />
                 </LinearLayout>
+
 
 
 

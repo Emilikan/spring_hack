@@ -14,5 +14,7 @@
     <string name="name">Name</string>
     <string name="cont">Continue</string>
     <string name="contu"><u>Continue ></u></string>
+    <string name="add_users">Adding members</string>
+    <string name="add_task">+ Add Task</string>
 
 </resources>
